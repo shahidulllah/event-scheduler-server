@@ -1,4 +1,4 @@
-import { events } from "../data/events";
+import { events } from "../data/event";
 import { Event } from "../types/event.type";
 
 export const EventModel = {
