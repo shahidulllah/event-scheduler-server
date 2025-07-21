@@ -4,7 +4,13 @@ import { Event } from "../types/event.type";
 import { categorizeEvent } from "../utils/categorize";
 
 export const EventService = {
-  getAllEvents: () => EventModel.getAll(),
+  getAllEvents: (category?: string) => {
+    const allEvents = EventModel.getAll();
+    if (category) {
+      return allEvents.filter((event) => event.category === category);
+    }
+    return allEvents;
+  },
 
   createEvent: (data: Omit<Event, "id" | "category" | "archived">): Event => {
     const category = categorizeEvent(data.title, data.notes);
