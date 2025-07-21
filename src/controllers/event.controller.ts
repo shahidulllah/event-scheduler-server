@@ -2,8 +2,19 @@ import { Request, Response } from "express";
 import { EventService } from "../services/event.service";
 
 export const EventController = {
-  getAll: (_: Request, res: Response) => {
+  getAll: (req: Request, res: Response) => {
+    const { category } = req.query;
+
     const events = EventService.getAllEvents();
+
+    if (category) {
+      const filtered = events.filter(
+        (event) =>
+          event.category.toLowerCase() === String(category).toLowerCase()
+      );
+      return res.status(200).json(filtered);
+    }
+
     res.status(200).json(events);
   },
 
