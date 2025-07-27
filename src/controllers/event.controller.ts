@@ -3,10 +3,10 @@ import { EventService } from "../services/event.service";
 
 export const EventController = {
   getAll: (req: Request, res: Response) => {
-  const { category } = req.query;
-  const events = EventService.getAllEvents(category as string | undefined);
-  res.status(200).json(events);
-},
+    const { category } = req.query;
+    const events = EventService.getAllEvents(category as string | undefined);
+    res.status(200).json(events);
+  },
 
   create: (req: Request, res: Response) => {
     const { title, date, time, notes } = req.body;
