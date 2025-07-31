@@ -1,3 +1,4 @@
+//Categorize event
 export function categorizeEvent(
   title: string,
   notes: string = ""
